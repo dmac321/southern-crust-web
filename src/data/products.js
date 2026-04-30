@@ -1,0 +1,58 @@
+export const products = [
+  {
+    id: 1,
+    name: "Classic Sourdough",
+    price: 12.0,
+    category: "breads",
+    description: "Tangy, chewy sourdough with a crisp crust. Baked fresh daily.",
+    image: "/images/sourdough.jpg",
+    available: true,
+  },
+  {
+    id: 2,
+    name: "Honey Wheat Loaf",
+    price: 10.0,
+    category: "breads",
+    description: "Soft and slightly sweet whole wheat loaf made with local honey.",
+    image: "/images/honey-wheat.jpg",
+    available: true,
+  },
+  {
+    id: 3,
+    name: "Pecan Cinnamon Rolls",
+    price: 18.0,
+    category: "pastries",
+    description: "Half dozen gooey cinnamon rolls topped with toasted pecans and cream cheese frosting.",
+    image: "/images/cinnamon-rolls.jpg",
+    available: true,
+  },
+  {
+    id: 4,
+    name: "Blueberry Scones",
+    price: 14.0,
+    category: "pastries",
+    description: "Buttery scones bursting with fresh blueberries. Set of 4.",
+    image: "/images/scones.jpg",
+    available: true,
+  },
+  {
+    id: 5,
+    name: "Chocolate Chip Cookies",
+    price: 12.0,
+    category: "cookies",
+    description: "Thick, chewy bakery-style cookies. Dozen per order.",
+    image: "/images/cookies.jpg",
+    available: true,
+  },
+  {
+    id: 6,
+    name: "Lemon Pound Cake",
+    price: 22.0,
+    category: "cakes",
+    description: "Dense, moist pound cake with fresh lemon glaze.",
+    image: "/images/pound-cake.jpg",
+    available: false,
+  },
+];
+
+export const categories = ["all", "breads", "pastries", "cookies", "cakes"];
