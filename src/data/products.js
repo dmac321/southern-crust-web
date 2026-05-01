@@ -5,7 +5,7 @@ export const products = [
     price: 12.0,
     category: "breads",
     description: "Tangy, chewy sourdough with a crisp crust. Baked fresh daily.",
-    image: "/images/sourdough.jpg",
+    image: "https://images.unsplash.com/photo-1612136435571-c97705feadfa?w=600&h=400&fit=crop&q=80",
     available: true,
   },
   {
@@ -14,7 +14,7 @@ export const products = [
     price: 10.0,
     category: "breads",
     description: "Soft and slightly sweet whole wheat loaf made with local honey.",
-    image: "/images/honey-wheat.jpg",
+    image: "https://images.unsplash.com/photo-1622467925884-ad22985d80ce?w=600&h=400&fit=crop&q=80",
     available: true,
   },
   {
@@ -23,7 +23,7 @@ export const products = [
     price: 18.0,
     category: "pastries",
     description: "Half dozen gooey cinnamon rolls topped with toasted pecans and cream cheese frosting.",
-    image: "/images/cinnamon-rolls.jpg",
+    image: "https://images.unsplash.com/photo-1657314100759-9549d7772298?w=600&h=400&fit=crop&q=80",
     available: true,
   },
   {
@@ -32,7 +32,7 @@ export const products = [
     price: 14.0,
     category: "pastries",
     description: "Buttery scones bursting with fresh blueberries. Set of 4.",
-    image: "/images/scones.jpg",
+    image: "https://images.unsplash.com/photo-1593954134618-5f29b4bd5433?w=600&h=400&fit=crop&q=80",
     available: true,
   },
   {
@@ -41,7 +41,7 @@ export const products = [
     price: 12.0,
     category: "cookies",
     description: "Thick, chewy bakery-style cookies. Dozen per order.",
-    image: "/images/cookies.jpg",
+    image: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=600&h=400&fit=crop&q=80",
     available: true,
   },
   {
@@ -50,7 +50,7 @@ export const products = [
     price: 22.0,
     category: "cakes",
     description: "Dense, moist pound cake with fresh lemon glaze.",
-    image: "/images/pound-cake.jpg",
+    image: "https://images.unsplash.com/photo-1598795164852-d2b5472d8bbb?w=600&h=400&fit=crop&q=80",
     available: false,
   },
 ];

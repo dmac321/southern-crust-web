@@ -1,7 +1,9 @@
 import { useCart } from "../../context/CartContext";
+import { CUSTOMER_LIMIT } from "../../context/InventoryContext";
 
 export default function CartItem({ item }) {
-  const { removeItem, updateQuantity } = useCart();
+  const { removeItem, updateQuantity, itemCount } = useCart();
+  const atCustomerLimit = itemCount >= CUSTOMER_LIMIT;
 
   return (
     <div className="cart-item">
@@ -20,7 +22,12 @@ export default function CartItem({ item }) {
           −
         </button>
         <span>{item.quantity}</span>
-        <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+        <button
+          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+          disabled={atCustomerLimit}
+        >
+          +
+        </button>
         <button className="btn-remove" onClick={() => removeItem(item.id)}>
           Remove
         </button>

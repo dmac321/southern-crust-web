@@ -1,10 +1,13 @@
 import { createContext, useContext, useReducer } from "react";
+import { CUSTOMER_LIMIT } from "./InventoryContext";
 
 const CartContext = createContext(null);
 
 function cartReducer(state, action) {
   switch (action.type) {
     case "ADD_ITEM": {
+      const totalInCart = state.reduce((sum, i) => sum + i.quantity, 0);
+      if (totalInCart >= CUSTOMER_LIMIT) return state;
       const existing = state.find((i) => i.id === action.item.id);
       if (existing) {
         return state.map((i) =>
@@ -15,10 +18,15 @@ function cartReducer(state, action) {
     }
     case "REMOVE_ITEM":
       return state.filter((i) => i.id !== action.id);
-    case "UPDATE_QUANTITY":
+    case "UPDATE_QUANTITY": {
+      const totalExcluding = state
+        .filter((i) => i.id !== action.id)
+        .reduce((sum, i) => sum + i.quantity, 0);
+      if (totalExcluding + action.quantity > CUSTOMER_LIMIT) return state;
       return state.map((i) =>
         i.id === action.id ? { ...i, quantity: action.quantity } : i
       );
+    }
     case "CLEAR_CART":
       return [];
     default:

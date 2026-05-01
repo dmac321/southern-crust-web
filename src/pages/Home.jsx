@@ -24,8 +24,8 @@ export default function Home() {
           <p>We source honey, eggs, and produce from local farms when possible.</p>
         </div>
         <div className="feature">
-          <h3>Pickup & Delivery</h3>
-          <p>Local pickup or delivery within 10 miles. Order 48 hours ahead.</p>
+          <h3>Delivery & Farmer's Markets</h3>
+          <p>We deliver within 10 miles. Find us at local farmer's markets too. Order 48 hours ahead.</p>
         </div>
       </section>
     </main>
