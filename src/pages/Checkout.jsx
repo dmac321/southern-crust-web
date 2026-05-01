@@ -31,6 +31,31 @@ const CARD_STYLE = {
   ".message-icon": { color: "#c8a97e" },
 };
 
+const SQUARE_SDK_URL = "https://web.squarecdn.com/v1/square.js";
+
+function loadSquareSdk() {
+  // Already loaded — nothing to do
+  if (window.Square) return Promise.resolve();
+
+  // Script tag exists in DOM but hasn't fired onload yet — wait for it
+  const existing = document.querySelector(`script[src="${SQUARE_SDK_URL}"]`);
+  if (existing) {
+    return new Promise((resolve, reject) => {
+      existing.addEventListener("load", resolve, { once: true });
+      existing.addEventListener("error", reject, { once: true });
+    });
+  }
+
+  // Not in DOM at all — inject it
+  return new Promise((resolve, reject) => {
+    const script = document.createElement("script");
+    script.src = SQUARE_SDK_URL;
+    script.onload = resolve;
+    script.onerror = () => reject(new Error("Square SDK failed to load"));
+    document.head.appendChild(script);
+  });
+}
+
 function formatDate(iso) {
   if (!iso) return "";
   const [y, m, d] = iso.split("-");
@@ -68,28 +93,60 @@ export default function Checkout() {
     if (cart.length === 0) return;
 
     let squareCard;
+    let cancelled = false;
 
     async function initSquare() {
-      if (!window.Square) {
-        setCardInitError("Payment system failed to load. Please refresh the page.");
+      // 1. Validate env vars — caught at build time, surface clearly
+      const appId = import.meta.env.VITE_SQUARE_APP_ID;
+      const locationId = import.meta.env.VITE_SQUARE_LOCATION_ID;
+      if (!appId || !locationId) {
+        setCardInitError(
+          "Payment configuration is missing. Please contact us at hello@southerncrust.com to place your order."
+        );
         return;
       }
+
+      // 2. Ensure the SDK script is loaded and window.Square is set
       try {
-        const payments = window.Square.payments(
-          import.meta.env.VITE_SQUARE_APP_ID,
-          import.meta.env.VITE_SQUARE_LOCATION_ID
-        );
+        await loadSquareSdk();
+      } catch {
+        if (!cancelled) {
+          setCardInitError(
+            "Payment system could not be reached. Please check your connection and refresh."
+          );
+        }
+        return;
+      }
+
+      if (cancelled) return;
+
+      // 3. Initialize Square payments and mount the card element
+      try {
+        const payments = window.Square.payments(appId, locationId);
         squareCard = await payments.card({ style: CARD_STYLE });
         await squareCard.attach("#card-container");
-        cardRef.current = squareCard;
-        setCardReady(true);
-      } catch {
-        setCardInitError("Payment form failed to initialize. Please refresh.");
+        if (!cancelled) {
+          cardRef.current = squareCard;
+          setCardReady(true);
+        } else {
+          squareCard.destroy();
+        }
+      } catch (err) {
+        if (!cancelled) {
+          const detail = err?.message ?? "";
+          const msg = detail.toLowerCase().includes("application id")
+            ? "Invalid payment credentials. Please contact us to complete your order."
+            : "Payment form failed to initialize. Please refresh the page.";
+          setCardInitError(msg);
+        }
       }
     }
 
     initSquare();
-    return () => { squareCard?.destroy(); };
+    return () => {
+      cancelled = true;
+      squareCard?.destroy();
+    };
   }, [cart.length]);
 
   // Confirmed order screen
