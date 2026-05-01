@@ -346,3 +346,38 @@ a:hover { text-decoration: underline; }
 
 .confirmed-details { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; font-size: 0.95rem; }
 .confirmed-details p { margin: 0; }
+
+/* ── Legal pages ── */
+.legal-page h1 { font-size: 2rem; color: var(--brown); margin-bottom: 0.25rem; }
+.legal-updated { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+
+.legal-content { max-width: 680px; }
+.legal-content h2 { color: var(--brown); font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+.legal-content p { margin-bottom: 0.75rem; }
+.legal-content ul { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+.legal-content li { margin-bottom: 0.35rem; }
+.legal-content a { color: var(--brown); }
+
+.legal-notice {
+  background: #fdf6ec;
+  border: 1px solid var(--warm-tan);
+  border-left: 4px solid var(--brown);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  margin-bottom: 1.75rem;
+}
+
+/* ── Footer links ── */
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+.footer-links a { color: var(--warm-tan); font-size: 0.8rem; }
+.footer-links a:hover { color: var(--cream); }
+.footer-divider { color: var(--muted); font-size: 0.8rem; }

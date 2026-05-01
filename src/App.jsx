@@ -10,6 +10,8 @@ import Menu from "./pages/Menu";
 import Cart from "./pages/Cart";
 import About from "./pages/About";
 import Checkout from "./pages/Checkout";
+import RefundPolicy from "./pages/RefundPolicy";
+import CottageFoodDisclaimer from "./pages/CottageFoodDisclaimer";
 import "./App.css";
 
 export default function App() {
@@ -24,6 +26,8 @@ export default function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
             <Route path="/checkout" element={<Checkout />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/cottage-food-disclaimer" element={<CottageFoodDisclaimer />} />
           </Routes>
           <Footer />
         </CartProvider>
