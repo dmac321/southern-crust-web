@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { InventoryProvider } from "./context/InventoryContext";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/layout/Navbar";
@@ -26,6 +28,8 @@ export default function App() {
           <Footer />
         </CartProvider>
       </InventoryProvider>
+      <Analytics />
+      <SpeedInsights />
     </BrowserRouter>
   );
 }
