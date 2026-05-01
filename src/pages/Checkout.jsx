@@ -31,7 +31,11 @@ const CARD_STYLE = {
   ".message-icon": { color: "#c8a97e" },
 };
 
-const SQUARE_SDK_URL = "https://web.squarecdn.com/v1/square.js";
+const SQUARE_ENV = import.meta.env.VITE_SQUARE_ENV ?? "production";
+const SQUARE_SDK_URL =
+  SQUARE_ENV === "sandbox"
+    ? "https://sandbox.web.squarecdn.com/v1/square.js"
+    : "https://web.squarecdn.com/v1/square.js";
 
 function loadSquareSdk() {
   // Already loaded — nothing to do
@@ -46,12 +50,13 @@ function loadSquareSdk() {
     });
   }
 
-  // Not in DOM at all — inject it
+  // Not in DOM at all — inject it and await
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
     script.src = SQUARE_SDK_URL;
     script.onload = resolve;
-    script.onerror = () => reject(new Error("Square SDK failed to load"));
+    script.onerror = () =>
+      reject(new Error(`Square SDK failed to load (${SQUARE_ENV})`));
     document.head.appendChild(script);
   });
 }

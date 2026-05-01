@@ -1,9 +1,14 @@
 const { SquareClient, SquareEnvironment } = require("square");
 const { randomUUID } = require("crypto");
 
+const environment =
+  process.env.SQUARE_ENV === "sandbox"
+    ? SquareEnvironment.Sandbox
+    : SquareEnvironment.Production;
+
 const client = new SquareClient({
   token: process.env.SQUARE_ACCESS_TOKEN,
-  environment: SquareEnvironment.Production,
+  environment,
 });
 
 module.exports = async function handler(req, res) {
