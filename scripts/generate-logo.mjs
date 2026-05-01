@@ -609,9 +609,20 @@ ctx.restore();
 const buf = canvas.toBuffer("image/png");
 writeFileSync(join(OUT_DIR, "logo.png"), buf);
 
-await sharp(buf)
-  .resize(1800, 1800, { kernel: sharp.kernel.lanczos3 })
-  .png({ compressionLevel: 8 })
-  .toFile(join(OUT_DIR, "logo@2x.png"));
+await Promise.all([
+  // 2× retina
+  sharp(buf)
+    .resize(1800, 1800, { kernel: sharp.kernel.lanczos3 })
+    .png({ compressionLevel: 8 })
+    .toFile(join(OUT_DIR, "logo@2x.png")),
+  // Favicon – 64×64 (browsers scale down to 32)
+  sharp(buf)
+    .resize(64, 64, { kernel: sharp.kernel.lanczos3 })
+    .png({ compressionLevel: 9 })
+    .toFile(join(OUT_DIR, "favicon.png")),
+]);
 
-console.log("Done → public/logo.png (900×900)  public/logo@2x.png (1800×1800)");
+console.log("Done →");
+console.log("  public/logo.png      (900×900)");
+console.log("  public/logo@2x.png   (1800×1800)");
+console.log("  public/favicon.png   (64×64)");

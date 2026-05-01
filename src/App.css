@@ -42,8 +42,23 @@ a:hover { text-decoration: underline; }
   color: var(--white);
 }
 
-.navbar-brand { font-size: 1.5rem; font-weight: bold; color: var(--cream); letter-spacing: 0.05em; }
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--cream);
+  letter-spacing: 0.05em;
+}
 .navbar-brand:hover { text-decoration: none; }
+.navbar-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
 .navbar-links { display: flex; gap: 1.5rem; align-items: center; }
 .navbar-links a { color: var(--cream); font-size: 0.95rem; }
@@ -100,9 +115,17 @@ a:hover { text-decoration: underline; }
 /* ── Home ── */
 .hero {
   text-align: center;
-  padding: 4rem 1rem;
+  padding: 3rem 1rem 4rem;
   border-bottom: 1px solid var(--border);
   margin-bottom: 3rem;
+}
+.hero-logo {
+  width: 220px;
+  height: 220px;
+  object-fit: contain;
+  margin: 0 auto 1.5rem;
+  display: block;
+  filter: drop-shadow(0 6px 24px rgba(92,61,30,0.22));
 }
 .hero h1 { font-size: 2.5rem; color: var(--brown); margin-bottom: 1rem; }
 .hero p { font-size: 1.1rem; color: var(--muted); max-width: 540px; margin: 0 auto 2rem; }
