@@ -1,12 +1,12 @@
-import { SquareClient, SquareEnvironment } from "square";
-import { randomUUID } from "crypto";
+const { SquareClient, SquareEnvironment } = require("square");
+const { randomUUID } = require("crypto");
 
 const client = new SquareClient({
   token: process.env.SQUARE_ACCESS_TOKEN,
   environment: SquareEnvironment.Production,
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "Method not allowed" });
     return;
@@ -53,4 +53,4 @@ export default async function handler(req, res) {
       "Payment failed. Please try again.";
     res.status(400).json({ error: msg });
   }
-}
+};
