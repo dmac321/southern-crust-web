@@ -7,13 +7,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-brand">
-        <img
-          src="/logo.png"
-          srcSet="/logo.png 1x, /logo@2x.png 2x"
-          alt="Southern Crust Bakery"
-          className="navbar-logo"
-        />
-        <span>Southern Crust</span>
+        Southern Crust
       </Link>
       <div className="navbar-links">
         <Link to="/">Home</Link>

@@ -43,22 +43,13 @@ a:hover { text-decoration: underline; }
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.25rem;
-  font-weight: bold;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 400;
   color: var(--cream);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 .navbar-brand:hover { text-decoration: none; }
-.navbar-logo {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
 
 .navbar-links { display: flex; gap: 1.5rem; align-items: center; }
 .navbar-links a { color: var(--cream); font-size: 0.95rem; }
@@ -487,28 +478,30 @@ main.home {
 
 .hero-eyebrow {
   display: block;
-  font-family: "Georgia", serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.28em;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: #8aac7a;
   margin-bottom: 1rem;
 }
 
 .hero-title {
-  font-family: "Georgia", serif;
+  font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: normal;
+  font-weight: 400;
   color: #f0e6d0;
   line-height: 1.08;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   margin: 0 0 0.65rem;
 }
 
 .hero-tagline {
-  font-family: "Georgia", serif;
-  font-size: clamp(1.05rem, 2.5vw, 1.45rem);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.6rem);
   font-style: italic;
+  font-weight: 300;
   color: #8aac7a;
   letter-spacing: 0.05em;
   margin: 0 0 1.85rem;
@@ -588,3 +581,160 @@ main.home {
 .footer-links a { color: var(--warm-tan); font-size: 0.8rem; }
 .footer-links a:hover { color: var(--cream); }
 .footer-divider { color: var(--muted); font-size: 0.8rem; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+
+/* -- Tablet (≤900px) ------------------------------------------ */
+@media (max-width: 900px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+  .order-summary {
+    position: static;
+  }
+}
+
+/* -- Phablet / large mobile (≤700px) --------------------------- */
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0.9rem 1.25rem;
+  }
+  .navbar-brand {
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+  }
+  .navbar-links {
+    gap: 1rem;
+  }
+  .navbar-links a {
+    font-size: 0.875rem;
+  }
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+/* -- Mobile (≤480px) ------------------------------------------ */
+@media (max-width: 480px) {
+  /* Navbar */
+  .navbar {
+    padding: 0.8rem 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .navbar-brand {
+    font-size: 1.05rem;
+    letter-spacing: 0.07em;
+  }
+  .navbar-links {
+    gap: 0.8rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .navbar-links a {
+    font-size: 0.82rem;
+  }
+
+  /* Main padding */
+  main {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Hero */
+  .hero-dark {
+    min-height: 100svh;
+  }
+  .hero-inner {
+    padding: 3.5rem 1.25rem 5rem;
+  }
+  .hero-logo-dark {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+  }
+
+  /* Features */
+  .features-section {
+    padding: 2.5rem 1rem;
+  }
+
+  /* Menu */
+  .menu-page h1 {
+    font-size: 1.6rem;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .category-filters {
+    gap: 0.5rem;
+  }
+  .filter-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Product card */
+  .product-image {
+    height: 160px;
+  }
+
+  /* Cart */
+  .cart-page h1 {
+    font-size: 1.6rem;
+  }
+  .cart-item {
+    gap: 0.75rem;
+    padding: 0.85rem;
+  }
+  .cart-summary {
+    max-width: 100%;
+    margin-left: 0;
+  }
+  .cart-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .cart-actions .btn-primary,
+  .cart-actions .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Checkout */
+  .checkout-page h1 {
+    font-size: 1.6rem;
+  }
+  .checkout-form h2,
+  .order-summary h2 {
+    font-size: 1.1rem;
+  }
+  .pay-btn {
+    font-size: 1rem;
+  }
+
+  /* About */
+  .about-page h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Legal */
+  .legal-page h1 {
+    font-size: 1.6rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 1.25rem 1rem;
+  }
+  .footer-links {
+    gap: 0.4rem;
+  }
+  .footer-links a {
+    font-size: 0.75rem;
+  }
+}
