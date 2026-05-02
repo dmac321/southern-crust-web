@@ -81,9 +81,6 @@ export default function Home() {
     <main className="home" ref={homeRef}>
       <section className="hero-dark" aria-label="Welcome to Southern Crust">
 
-        {/* Grain / linen texture */}
-        <div className="grain-overlay" aria-hidden="true" />
-
         {/* Warm ambient glow */}
         <div className="ambient-glow" aria-hidden="true" />
 

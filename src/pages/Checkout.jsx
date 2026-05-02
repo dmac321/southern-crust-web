@@ -10,25 +10,25 @@ const minDateStr = minDate.toISOString().split("T")[0];
 
 const CARD_STYLE = {
   ".input-container": {
-    borderColor: "#e5d7c5",
+    borderColor: "#2e2618",
     borderRadius: "8px",
   },
   ".input-container.is-focus": {
-    borderColor: "#c8a97e",
+    borderColor: "#8aac7a",
   },
   ".input-container.is-error": {
-    borderColor: "#c0392b",
+    borderColor: "#c05050",
   },
   input: {
-    color: "#2d1f0f",
+    color: "#f0e6d0",
     fontFamily: "Georgia, serif",
     fontSize: "15px",
   },
   "input::placeholder": {
-    color: "#7a6550",
+    color: "#9a8878",
   },
-  ".message-text": { color: "#7a6550" },
-  ".message-icon": { color: "#c8a97e" },
+  ".message-text": { color: "#9a8878" },
+  ".message-icon": { color: "#8aac7a" },
 };
 
 const SQUARE_ENV = import.meta.env.VITE_SQUARE_ENV ?? "production";
